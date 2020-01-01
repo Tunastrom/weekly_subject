@@ -17,7 +17,7 @@
 	         margin-left: 20px; border-style: solid;
 	         border-width: thin; border-color: gray; border-radius: 5px; }
 	.radio { margin: 10px; font-size: 30px; width: 25px; height:25px; padding: 10px;}
-	.font { font-size: 20px; padding: 10px; }
+	.r_font { font-size: 20px; padding: 10px; }
 	.apply { height: 40px; width: 80px; font-size: 20px; 
 	         color: white; background-color: SteelBlue; 
 	         border-style: solid; border-width: thin; 
@@ -34,8 +34,8 @@
 		<table>
 		    <caption align="bottom" style="margin-top: 20px;">
 					<div>
-					   <button class="apply">등록</button>
-						<button class="cancle">취소</button>
+					   <button class="apply" onclick="location.href='testlist1.html'">등록</button>
+						<button class="cancle" onclick="location.href='testlist1.html'">목록</button>
 					</div> 
 			</caption>
 			<tr>
@@ -73,10 +73,10 @@
 				<th>정답</th>
 				<td>
 				    <div style="padding: 15px;">
-						<input type="radio" class="radio" name="score1" value="1" checked><font class="font">1</font>
-						<input type="radio" class="radio" name="score2" value="2" checked><font class="font">1</font>
-						<input type="radio" class="radio" name="score3" value="3" checked><font class="font">1</font>
-						<input type="radio" class="radio" name="score4" value="4" checked><font class="font">1</font>
+						<input type="radio" class="radio" name="score1" value="1" checked><font class="r_font">1</font>
+						<input type="radio" class="radio" name="score2" value="2" checked><font class="r_font">2</font>
+						<input type="radio" class="radio" name="score3" value="3" checked><font class="r_font">3</font>
+						<input type="radio" class="radio" name="score4" value="4" checked><font class="r_font">4</font>
 					</div>
 				</td>
 			</tr>

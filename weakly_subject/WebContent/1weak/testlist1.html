@@ -3,8 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+	 .graybox { background-color: #DCDCDC; border-width: thin;}
+	 .radio { font-size: 20px; width: 20px; height:20px; }
+	 .input { padding: 5px; height:30px;
+	          border-style: solid; border-width: thin;
+	          border-color: gray; border-radius: 5px;} 
+	 .bluebox { height: 40px; width: 120px; font-size: 20px; 
+	              color: white; background-color: SteelBlue; 
+	              border-style: solid; border-width: thin; }
+	 .bluebox1 { height: 25px; width: 70px; font-size: 20px; 
+	              color: white; background-color: SteelBlue; 
+	              border-style: solid; border-width: thin;                 
+	              border-color: SteelBlue ; border-radius: 5px; }
+	 .yellowbox{ height: 40px; width: 120px; margin-left: 10px; 
+	         font-size: 20px; color: white; background-color: Gold; 
+	         border-style: solid; border-width: thin; 
+	         border-color: Gold ; border-radius: 5px; }
+	 .gbox{ height: 35px; width: 90px; margin-left: 10px; 
+	           font-size: 20px; color: white; background-color: Gray; 
+	           border-style: solid; border-width: thin; 
+	           border-color: Gray ; border-radius: 5px; }        
+	 select { width: 150px; height: 40px; padding: 5px;
+	          margin-left: 20px; border-style: solid;
+	          border-width: thin; border-color: gray; border-radius: 5px; }
+	          
+</style>
 </head>
 <body>
-
+	<div style="margin: 5% 15%">
+		<div style="margin-bottom: 40px;">
+			<div style="margin: 0px 0px 20px 0px;"><font style="font-size: 24px; font-weight: bold;">시험목록</font></div>
+			<table width="1000"> 
+				<caption align="bottom">
+					<div align="right">'
+						<button class="bluebox" onclick="location.href='addQ1.html'">문제등록</button>
+						<button class="bluebox" onclick="location.href='addtest1.html'">시험지등록</button>
+					</div>
+				</caption>
+				<tr class="graybox" style="width: 1000px">
+					<th>응시여부</th>
+					<td colspan="2">
+						<input type="radio" class="radio" value="1" checked><font class="r_font">전체</font>
+					    <input type="radio" class="radio" value="1" checked><font class="r_font">응시</font>
+					    <input type="radio" class="radio" value="1" checked><font class="r_font">미응시</font>
+					</td>	
+					<td colspan="2" align="right">
+						<button class="yellowbox" onclick="location.href=''">초기화</button>
+					</td>
+				</tr>
+				<tr class="graybox">
+					<th>시험종목</th>
+					<td>
+						<select>
+					       <option value="">데이터베이스</option>
+					    </select>
+					</td>
+					<th>시험명</th>	
+					<td>
+						<input type="text" class="input" style="width: 200px;" value="내용을 입력하세요">
+					</td>
+					<td align="right">
+				    	<button class="bluebox" onclick="location.href=''">검색</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<table width="1000">
+				<tbody>		
+					<tr>
+						<th>No.</th>
+						<th>시험종목</th>
+						<th>시험명</th>
+						<th>응시여부</th>
+					</tr>
+					<tr>
+						<td>89</td>
+						<td>데이터베이스</td>
+						<td>3월 정기시험</td>
+						<td align="center">
+							<button class="gbox" onclick="location.href='exam1.html'">응시하기</button>
+						</td>
+					</tr>
+					<tr>
+						<td>88</td>
+						<td>프로그래밍</td>
+						<td>진급시험</td>
+						<td align="center">
+							<button class="bluebox1" onclick="location.href='result1.html'">결과확인</button>
+						</td>
+					</tr>
+					<tr>
+						<td>87</td>
+						<td>운영체제</td>
+						<td>3월정기시험</td>
+						<td align="center">
+							<button class="gbox" onclick="location.href='exam1.html'">응시하기</button>
+						</td>
+					</tr>
+					<tr>
+						<td>86</td>
+						<td>프로그래밍</td>
+						<td>신입사원 레벨 테스트</td>
+						<td align="center">
+							<button class="bluebox1" onclick="location.href='result1.html'">결과확인</button>
+						</td>
+					</tr>
+					<tr>
+						<td>85</td>
+						<td>정보기초</td>
+						<td>신입사원 레벨 테스트</td>
+						<td align="center">
+							<button class="gbox" onclick="location.href='exam1.html'">응시하기</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
