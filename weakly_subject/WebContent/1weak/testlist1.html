@@ -2,123 +2,139 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>시험목록 (2 of 6)</title>
 <style type="text/css">
 	 .graybox { background-color: #DCDCDC; border-width: thin;}
-	 .radio { font-size: 20px; width: 20px; height:20px; }
+	 .radio { width: 20px; height:20px; }
 	 .input { padding: 5px; height:30px;
 	          border-style: solid; border-width: thin;
 	          border-color: gray; border-radius: 5px;} 
-	 .bluebox { height: 40px; width: 120px; font-size: 20px; 
+	 .bluebox { height: 37px; width: 120px; font-size: 20px; 
 	              color: white; background-color: SteelBlue; 
-	              border-style: solid; border-width: thin; }
-	 .bluebox1 { height: 25px; width: 70px; font-size: 20px; 
+	              border-style: solid; border-width: thin; 
+	              border-radius: 5px;}
+	 .bluebox1 { height: 25px; width: 70px; font-size: 10px; 
 	              color: white; background-color: SteelBlue; 
 	              border-style: solid; border-width: thin;                 
 	              border-color: SteelBlue ; border-radius: 5px; }
-	 .yellowbox{ height: 40px; width: 120px; margin-left: 10px; 
+	 .yellowbox{ height: 37px; width: 120px; margin-left: 10px; 
 	         font-size: 20px; color: white; background-color: Gold; 
 	         border-style: solid; border-width: thin; 
 	         border-color: Gold ; border-radius: 5px; }
-	 .gbox{ height: 35px; width: 90px; margin-left: 10px; 
-	           font-size: 20px; color: white; background-color: Gray; 
+	 .gbox{ height: 30px; width: 90px; margin-left: 10px; 
+	           font-size: 15px; color: white; background-color: Gray; 
 	           border-style: solid; border-width: thin; 
-	           border-color: Gray ; border-radius: 5px; }        
+	           border-color: Gray ; border-radius: 5px; }
 	 select { width: 150px; height: 40px; padding: 5px;
-	          margin-left: 20px; border-style: solid;
+	          border-style: solid;
 	          border-width: thin; border-color: gray; border-radius: 5px; }
-	          
+	 .right_squre { height: 40px; width: 40px; 
+	               background-color: #F5F5F5; border-color:	#F5F5F5; 
+	               border-style: solid; border-width: thin;
+	               border-radius: 5px;}
+	 th, td{ padding: 5px 20px 5px 20px; }
+	 td{ text-align: center;}  
+	 font { font-size: 14px;}
 </style>
 </head>
 <body>
 	<div style="margin: 5% 15%">
-		<div style="margin-bottom: 40px;">
+		<div style="margin-bottom: 20px;">
 			<div style="margin: 0px 0px 20px 0px;"><font style="font-size: 24px; font-weight: bold;">시험목록</font></div>
-			<table width="1000"> 
+			<table width="1000" rules="none"> 
 				<caption align="bottom">
-					<div align="right">'
+					<div align="right" style="margin-top: 12px">
 						<button class="bluebox" onclick="location.href='addQ1.html'">문제등록</button>
 						<button class="bluebox" onclick="location.href='addtest1.html'">시험지등록</button>
 					</div>
 				</caption>
 				<tr class="graybox" style="width: 1000px">
 					<th>응시여부</th>
-					<td colspan="2">
+					<td colspan="2" style="text-align: left; padding: 10px 0px 10px 20px">
 						<input type="radio" class="radio" value="1" checked><font class="r_font">전체</font>
 					    <input type="radio" class="radio" value="1" checked><font class="r_font">응시</font>
 					    <input type="radio" class="radio" value="1" checked><font class="r_font">미응시</font>
 					</td>	
-					<td colspan="2" align="right">
+					<td colspan="2" style="text-align: right;">
 						<button class="yellowbox" onclick="location.href=''">초기화</button>
 					</td>
 				</tr>
 				<tr class="graybox">
 					<th>시험종목</th>
-					<td>
+					<td  style="text-align: left;">
 						<select>
 					       <option value="">데이터베이스</option>
 					    </select>
 					</td>
 					<th>시험명</th>	
-					<td>
+					<td  style="text-align: left;">
 						<input type="text" class="input" style="width: 200px;" value="내용을 입력하세요">
 					</td>
-					<td align="right">
+					<td style="text-align: right;">
 				    	<button class="bluebox" onclick="location.href=''">검색</button>
 					</td>
 				</tr>
 			</table>
 		</div>
 		<div>
-			<table width="1000">
-				<tbody>		
-					<tr>
-						<th>No.</th>
-						<th>시험종목</th>
-						<th>시험명</th>
-						<th>응시여부</th>
+			<table width="1000" border = "1" frame="hsides" bordercolor="gray" rules ="rows">
+				<caption align="bottom">
+					<div style="margin-top: 20px;">
+						<button class="right_squre"><font>&lt;</font></button>
+						<button class="right_squre"><font>1</font></button>
+						<button class="right_squre" style="background-color: SteelBlue"><font>2</font></button>
+						<button class="right_squre"><font>3</font></button>
+						<button class="right_squre"><font>4</font></button>
+						<button class="right_squre"><font>5</font></button>
+						<button class="right_squre"><font>&gt;</font></button>
+					</div>
+				</caption>	 
+					<tr class="graybox" style="height: 35px;">
+						<th><font>No.</font></th>
+						<th><font>시험종목</font></th>
+						<th><font>시험명</font></th>
+						<th><font>응시여부</font></th>
 					</tr>
 					<tr>
-						<td>89</td>
-						<td>데이터베이스</td>
-						<td>3월 정기시험</td>
+						<td><font>89</font></td>
+						<td><font>데이터베이스</font></td>
+						<td><font>3월 정기시험</font></td>
 						<td align="center">
 							<button class="gbox" onclick="location.href='exam1.html'">응시하기</button>
 						</td>
 					</tr>
 					<tr>
-						<td>88</td>
-						<td>프로그래밍</td>
-						<td>진급시험</td>
+						<td><font>88</font></td>
+						<td><font>프로그래밍</font></td>
+						<td><font>진급시험</font></td>
 						<td align="center">
 							<button class="bluebox1" onclick="location.href='result1.html'">결과확인</button>
 						</td>
 					</tr>
 					<tr>
-						<td>87</td>
-						<td>운영체제</td>
-						<td>3월정기시험</td>
+						<td><font>87</td>
+						<td><font>운영체제</td>
+						<td><font>3월정기시험</td>
 						<td align="center">
 							<button class="gbox" onclick="location.href='exam1.html'">응시하기</button>
 						</td>
 					</tr>
 					<tr>
-						<td>86</td>
-						<td>프로그래밍</td>
-						<td>신입사원 레벨 테스트</td>
+						<td><font>86</font></td>
+						<td><font>프로그래밍</font></td>
+						<td><font>신입사원 레벨 테스트</font></td>
 						<td align="center">
 							<button class="bluebox1" onclick="location.href='result1.html'">결과확인</button>
 						</td>
 					</tr>
 					<tr>
-						<td>85</td>
-						<td>정보기초</td>
-						<td>신입사원 레벨 테스트</td>
+						<td><font>85</font></td>
+						<td><font>정보기초</font></td>
+						<td><font>신입사원 레벨 테스트</font></td>
 						<td align="center">
 							<button class="gbox" onclick="location.href='exam1.html'">응시하기</button>
 						</td>
 					</tr>
-				</tbody>
 			</table>
 		</div>
 	</div>
