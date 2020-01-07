@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>문제등록 (6 of 6)</title>
 <script type="text/javascript" src="input_Check.js"></script>
+<script src="jquery.min.js"></script>
 <style type="text/css">
     tr, td { height: 60px; }
 	.input { width: 710px; padding: 5px; height:35px;
@@ -28,20 +29,43 @@
 	         border-style: solid; border-width: thin; 
 	         border-color: Gold ; border-radius: 5px; }
 </style>
+<script>
+$(function(){
+	var radio_id;
+	var radio_stat;
+	
+	$(".radio_parents").children().hover(function(){
+		radio_id=$(this).attr("id");                             
+		radio_stat = $('#'+radio_id).prop("checked");
+	});
+	
+	$(".radio_parents").children().click(function(){
+		if (radio_stat == true) {
+			$('#'+radio_id).prop("checked", false); 
+		} else {
+			$('#'+radio_id).prop("checked", true);  
+		} 
+	})
+	
+	$(".radio_parents").children().mouseup(function(){
+		radio_stat=$('#'+radio_id).prop("checked");
+	});	
+});
+</script>
 </head>
 <body>
-	<div style="margin: 5% 5%;">
+	<div style="margin: 100px;">
 	    <font style="font-size: 24px; font-weight: bold;" >문제 등록</font>
 	    <form id="frm" name="frm" action="testlist1.html" method="post" onsubmit="return questFormCheck()">
 		<table>
 		    <caption align="bottom" style="margin-top: 20px;">
 					<div>
 					   <button type="submit" class="apply">등록</button>
-					   <button class="cancle" onclick="location.href='testlist1.html'">목록</button>
+					   <button type="button" class="cancle" onclick="location.href='testlist1.html'">목록</button>
 					</div>
 			</caption>
 			<tr>
-				<th width="70">종목</th>
+				<th style="width: 100px; ">종목</th>
 				<td><select>
 				       <option value="001">데이터베이스</option>
 				       <option value="002">자바</option>
@@ -76,11 +100,23 @@
 			<tr>
 				<th>정답</th>
 				<td>
-				    <div style="padding: 15px;">
-						<input type="radio" class="radio" name="score1" value="1" checked><font class="r_font">1</font>
-						<input type="radio" class="radio" name="score2" value="2"><font class="r_font">2</font>
-						<input type="radio" class="radio" name="score3" value="3"><font class="r_font">3</font>
-						<input type="radio" class="radio" name="score4" value="4"><font class="r_font">4</font>
+				    <div  style="padding: 15px;">
+						<span class="radio_parents">
+							<input type="radio" class="radio" name="score1" id="score1" value="1">
+							<label for="score1"><font class="r_font">1</font></label>
+						</span>
+						<span class="radio_parents">
+							<input type="radio" class="radio" name="score2" id="score2"value="2">
+							<label for="score2"><font class="r_font">2</font></label>
+						</span>
+						<span class="radio_parents">
+							<input type="radio" class="radio" name="score3" id="score3"value="3">
+							<label for="score3"><font class="r_font">3</font></label>
+						</span>
+						<span class="radio_parents">
+							<input type="radio" class="radio" name="score4"id="score4" value="4">
+							<label for="score4"><font class="r_font">4</font></label>
+						</span>
 					</div>
 				</td>
 			</tr>

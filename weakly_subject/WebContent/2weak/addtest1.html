@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>시험지등록 (5 of 6)</title>
+<script src="jquery.min.js"></script>
 <script type="text/javascript" src="input_Check.js"></script>
 <style type="text/css">
     tr, td { height: 60px; }
@@ -32,16 +33,55 @@
 	         border-style: solid; border-width: thin; 
 	         border-color: Gold ; border-radius: 5px; }
 </style>
+<script>
+$(function(){
+	var radio_id;
+	var radio_stat;
+	
+	$(".radio_parents").children().hover(function(){
+		radio_id=$(this).attr("id");                             
+		radio_stat = $('#'+radio_id).prop("checked");    console.log(radio_stat);
+	});
+	
+	$(".radio_parents").children().click(function(){
+		if (radio_stat == true) {
+			$('#'+radio_id).prop("checked", false); 
+		} else {
+			$('#'+radio_id).prop("checked", true);  
+		} 
+	})
+	$(".radio_parents").children().mouseup(function(){
+		radio_stat=$('#'+radio_id).prop("checked");  console.log(radio_stat);
+	});
+	
+	$("font").hover(function(){
+		radio_id=$(this).parent().prev().attr("id");     console.log(radio_id);
+		radio_stat = $('#'+radio_id).prop("checked");    console.log(radio_stat);
+	});
+	
+	$("font").click(function(){
+		if (radio_stat == true) {
+			$('#'+radio_id).prop("checked", false); 
+		} else {
+			$('#'+radio_id).prop("checked", true);  
+		} 
+	})
+	
+	$("font").mouseup(function(){
+		radio_stat=$('#'+radio_id).prop("checked");  console.log(radio_stat);
+	});	
+});
+</script>
 </head>
 <body>
-	<div style="margin: 10% 10%">
+	<div style="margin: 200px;">
 	    <font style="font-size: 24px; font-weight: bold;" >시험지등록</font>
 	    <form id="frm" name="frm" action="testlist1.html" method="post" onsubmit="return testFormCheck()">
-		<table>
+		<table style="margin: 25px 0px 0px 25px;">
 		    <caption align="bottom" style="margin-top: 20px;">
 					<div>
 					   <button type="submit" class="apply">등록</button>
-					   <button class="cancle" onclick="location.href='testlist1.html'">목록</button>
+					   <button type="button" class="cancle" onclick="location.href='testlist1.html'">목록</button>
 					</div> 
 			</caption>
 			<tr>
@@ -80,8 +120,15 @@
 				<th>출제유형</th>
 				<td colspan="3">
 					<div>
-						<input type="radio" class="radio" name="type1" value="R"><font class="r_font">랜덤출제</font>
-						<input type="radio" class="radio" name="type2" value="A"><font class="r_font">고정출제</font>
+						<span class="radio_parents">
+							<input type="radio" class="radio" name="type1" id="type1" value="R" checked>
+						    <label for="type1"><font class="r_font">랜덤출제</font></label>
+						</span>
+						<span class="radio_parents">
+							<input type="radio" class="radio" name="type2" id="type2"value="A">
+						    <label for="type2"><font class="r_font">고정출제</font></label>
+						</span>
+						
 					</div>
 				</td>
 			</tr>				
