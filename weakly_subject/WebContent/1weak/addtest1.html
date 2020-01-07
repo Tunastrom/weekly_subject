@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>시험지등록 (5 of 6)</title>
+<script type="text/javascript" src="input_Check.js"></script>
 <style type="text/css">
     tr, td { height: 60px; }
 	.input { width: 500px; padding: 5px; height:35px;
@@ -35,53 +36,57 @@
 <body>
 	<div style="margin: 10% 10%">
 	    <font style="font-size: 24px; font-weight: bold;" >시험지등록</font>
+	    <form id="frm" name="frm" action="testlist1.html" method="post" onsubmit="return testFormCheck()">
 		<table>
 		    <caption align="bottom" style="margin-top: 20px;">
 					<div>
-					   <button class="apply" onclick="location.href='testlist1.html'">등록</button>
-						<button class="cancle" onclick="location.href='testlist1.html'">목록</button>
+					   <button type="submit" class="apply">등록</button>
+					   <button class="cancle" onclick="location.href='testlist1.html'">목록</button>
 					</div> 
 			</caption>
 			<tr>
 				<th width="100">시험명</th>
 				<td colspan="4">
-					<input type="text" class="input" value="신입사원 레벨 테스트">
+					<input type="text" name="testName" class="input" value="신입사원 레벨 테스트">
 				</td>
 			</tr>
 			<tr>
 				<th>문항 수</th>
 				<td style="width: 210px;">
-					<input type="text" class="input_short" value="10">
+					<input type="text" name="questCount" class="input_short" value="10">
 				</td>
 				<th align="right">시험시간</th>
 				<td>
-					<input type="text" class="input_short"  value="1시간">
+					<input type="text" name="testTime" class="input_short"  value="1시간">
 				</td>
 			</tr>	
 			<tr>
 				<th>시험종목</th>
 				<td>
 					<select>
-				       <option value="">데이터베이스</option>
+				       <option value="001">데이터베이스</option>
+				       <option value="002">자바</option>
+				       <option value="003">오라클</option>
 				    </select>
 				</td>
 			</tr>	
 			<tr>
 				<th>상세정보</th>
 				<td colspan="4">
-					<input type="text" class="input_h" value="예담 주식회사 2020년 신입사원 공채 실기 테스트입니다.">
+					<input type="text" name="details" class="input_h" value="예담 주식회사 2020년 신입사원 공채 실기 테스트입니다.">
 				</td>
 			</tr>	
 			<tr>
 				<th>출제유형</th>
 				<td colspan="3">
 					<div>
-						<input type="radio" class="radio" name="score1" value="1" checked><font class="r_font">랜덤출제</font>
-						<input type="radio" class="radio" name="score2" value="2" checked><font class="r_font">고정출제</font>
+						<input type="radio" class="radio" name="type1" value="R"><font class="r_font">랜덤출제</font>
+						<input type="radio" class="radio" name="type2" value="A"><font class="r_font">고정출제</font>
 					</div>
 				</td>
 			</tr>				
 		</table>
+		</form>
 	</div>
 </body>
 </html>

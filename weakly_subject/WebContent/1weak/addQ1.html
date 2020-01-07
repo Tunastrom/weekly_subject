@@ -31,43 +31,44 @@
 <body>
 	<div style="margin: 5% 5%;">
 	    <font style="font-size: 24px; font-weight: bold;" >문제 등록</font>
+	    <form id="frm" name="frm" action="testlist1.html" method="post" onsubmit="return questFormCheck()">
 		<table>
 		    <caption align="bottom" style="margin-top: 20px;">
 					<div>
-					   <button class="apply" onclick="location.href='testlist1.html'">등록</button>
-						<button class="cancle" onclick="location.href='testlist1.html'">목록</button>
-					</div> 
+					   <button type="submit" class="apply">등록</button>
+					   <button class="cancle" onclick="location.href='testlist1.html'">목록</button>
+					</div>
 			</caption>
 			<tr>
 				<th width="70">종목</th>
 				<td><select>
-				       <option value="">데이터베이스</option>
+				       <option value="002">데이터베이스</option>
 				    </select>
 			    </td>
 			</tr>
 			<tr>
 				<th>문제</th>
-				<td><input type="text" class="input_h"></td>
+				<td><input type="text" name="qeustion"class="input_h"></td>
 			</tr>
 			<tr>
 				<th>보기1</th>
-				<td><input type="text" class="input" value="신입사원 레벨 테스트"></td>
+				<td><input type="text" name="selectinon1" class="input" value="신입사원 레벨 테스트"></td>
 			</tr>
 			<tr>
 				<th>보기2</th>
-				<td><input type="text" class="input" value="신입사원 레벨 테스트"></td>
+				<td><input type="text" name="selectinon2" class="input" value="신입사원 레벨 테스트"></td>
 			</tr>
 			<tr>
 				<th>보기3</th>
-				<td><input type="text" class="input" value="신입사원 레벨 테스트"></td>
+				<td><input type="text" name="selectinon3" class="input" value="신입사원 레벨 테스트"></td>
 			</tr>
 			<tr>
 				<th>보기4</th>
-				<td><input type="text" class="input" value="신입사원 레벨 테스트"></td>
+				<td><input type="text" name="selectinon4" class="input" value="신입사원 레벨 테스트"></td>
 			</tr>
 			<tr>
 				<th>해설</th>
-				<td><input type="text" class="input_h" value="신입사원 레벨 테스트"></td>
+				<td><input type="text" name="comment" class="input_h" value="신입사원 레벨 테스트"></td>
 			</tr>
 			<tr>
 				<th>정답</th>
@@ -81,6 +82,7 @@
 				</td>
 			</tr>
 		</table>
+		</form>
 	</div>
 </body>
 </html>
