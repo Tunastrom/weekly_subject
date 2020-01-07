@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문제등록 (6 of 6)</title>
+<script type="text/javascript" src="input_Check.js"></script>
+<style type="text/css">
+    tr, td { height: 60px; }
+	.input { width: 710px; padding: 5px; height:35px;
+	         margin-left: 20px; border-style: solid;
+	         border-style: solid; border-width: thin;
+	         border-color: gray; border-radius: 5px; } 
+	.input_h { width: 700px; padding: 5px; height: 70px; 
+	           margin-left: 20px; border-style: solid;
+	           border-style: solid; border-width: thin;
+	           border-color: gray; border-radius: 5px; }
+	select { width: 150px; height: 40px; padding: 5px;
+	         margin-left: 20px; border-style: solid;
+	         border-width: thin; border-color: gray; border-radius: 5px; }
+	.radio { margin: 10px; width: 25px; height:25px; padding: 10px;}
+	.r_font { font-size: 20px; padding: 10px; }
+	.apply { height: 40px; width: 80px; font-size: 20px; 
+	         color: white; background-color: SteelBlue; 
+	         border-style: solid; border-width: thin; 
+	         border-color: SteelBlue ; border-radius: 5px; }
+	.cancle{ height: 40px; width: 80px; margin-left: 10px; 
+	         font-size: 20px; color: white; background-color: Gold; 
+	         border-style: solid; border-width: thin; 
+	         border-color: Gold ; border-radius: 5px; }
+</style>
+</head>
+<body>
+	<div style="margin: 5% 5%;">
+	    <font style="font-size: 24px; font-weight: bold;" >문제 등록</font>
+	    <form id="frm" name="frm" action="testlist1.html" method="post" onsubmit="return questFormCheck()">
+		<table>
+		    <caption align="bottom" style="margin-top: 20px;">
+					<div>
+					   <button type="submit" class="apply">등록</button>
+					   <button class="cancle" onclick="location.href='testlist1.html'">목록</button>
+					</div>
+			</caption>
+			<tr>
+				<th width="70">종목</th>
+				<td><select>
+				       <option value="001">데이터베이스</option>
+				       <option value="002">자바</option>
+				       <option value="003">오라클</option>
+				    </select>
+			    </td>
+			</tr>
+			<tr>
+				<th>문제</th>
+				<td><input type="text" name="qeustion"class="input_h"></td>
+			</tr>
+			<tr>
+				<th>보기1</th>
+				<td><input type="text" name="selection1" class="input" value="신입사원 레벨 테스트"></td>
+			</tr>
+			<tr>
+				<th>보기2</th>
+				<td><input type="text" name="selection2" class="input" value="신입사원 레벨 테스트"></td>
+			</tr>
+			<tr>
+				<th>보기3</th>
+				<td><input type="text" name="selection3" class="input" value="신입사원 레벨 테스트"></td>
+			</tr>
+			<tr>
+				<th>보기4</th>
+				<td><input type="text" name="selection4" class="input" value="신입사원 레벨 테스트"></td>
+			</tr>
+			<tr>
+				<th>해설</th>
+				<td><input type="text" name="comment" class="input_h" value="신입사원 레벨 테스트"></td>
+			</tr>
+			<tr>
+				<th>정답</th>
+				<td>
+				    <div style="padding: 15px;">
+						<input type="radio" class="radio" name="score1" value="1" checked><font class="r_font">1</font>
+						<input type="radio" class="radio" name="score2" value="2"><font class="r_font">2</font>
+						<input type="radio" class="radio" name="score3" value="3"><font class="r_font">3</font>
+						<input type="radio" class="radio" name="score4" value="4"><font class="r_font">4</font>
+					</div>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</body>
+</html>
