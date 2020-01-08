@@ -70,7 +70,7 @@ function testFormCheck(){
 	}
 	if (!frm.type1.checked
 		&& !frm.type2.checked){
-		alert("정답을 입력하세요");
+		alert("출제유형을 입력하세요");
 		frm.type1.focus();
 			return false;
 		}

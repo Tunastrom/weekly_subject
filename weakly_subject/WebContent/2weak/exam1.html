@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <title>시험응시 (3 of 6)</title>
+<script type="text/javascript" src="input_Check.js"></script>
 <style>
      th { padding: 20px 0 20px 0}
 	.input_short { padding: 5px; height:35px;
 	               border-style: solid;
 	               border-style: solid; border-width: thin;
 	               border-color: #DCDCDC; border-radius: 5px; } 
-	.input { width: 400px; padding: 5px; height:35px;
+	.input { width:775px; padding: 5px; height:35px;
 	         border-style: solid;
 	         border-style: solid; border-width: thin;
 	         border-color: #DCDCDC; border-radius: 5px; } 
@@ -24,10 +25,27 @@
 	         background-color: RoyalBlue ; border-width: thin;
 	         border-color:RoyalBlue ; border-radius: 5px; }
 </style>
+<script>
+	var min=60;
+	var sec=00;		
+	$(document).ready(function({
+		setInterval(function(){
+			if (sec == 00){
+				min = min-1;
+				sec = 60-1;
+			} else {
+				sec = sec - 1;
+			}
+			$("#timer").attr("value",min+":"+sec);
+		}, 1000);	
+	}));
+	
+</script>
 </head>
 <body>
 	<div style="margin: 15% 15%; width: 1100px;">
 		<div style="margin: 0px 0px 20px 0px;"><font style="font-size: 24px; font-weight: bold;">시험응시</font></div> 
+		<form id="frm" name="frm" action="testlist1.html" method="post" onsubmit="return testFormCheck()">
 		<table border="0" rules="none">
 			<caption align="bottom" style="margin-top: 20px;">
 					<div align="left">
@@ -54,9 +72,11 @@
 			</tr>
 			<tr class="graybox">
 				<th><font>상세정보</font></th>
-				<td colspan="8">
+				<td colspan="6">
 					<input type="text" class="input" value="예담 주식회사 2020년 신입사원 공채 실기 테스트입니다.">
 				</td>
+				<th><font>남은시간</font></th>
+				<td><input type="text" id="timer" class="input_short" style="width: 70px;" value=""></td>
 			</tr>
 			<tr style="height: 40px;"><td colspan="9"></td></tr>
 			<tr>
@@ -213,6 +233,7 @@
 				</td>
 			</tr>
 		</table>
+		</form>
 	</div>
 </body>
 </html>
