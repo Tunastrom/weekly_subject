@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>시험응시 (3 of 6)</title>
-<script type="text/javascript" src="input_Check.js"></script>
+<script type="text/javascript"></script>
+<script src="input_Check.js"></script>
+<script src="jquery.min.js"></script>
 <style>
-     th { padding: 20px 0 20px 0}
+     th { padding: 20px 0px 20px 0px}
 	.input_short { padding: 5px; height:35px;
 	               border-style: solid;
 	               border-style: solid; border-width: thin;
@@ -28,17 +30,22 @@
 <script>
 	var min=60;
 	var sec=00;		
-	$(document).ready(function({
-		setInterval(function(){
+	
+	var timer=setInterval(function(){
 			if (sec == 00){
 				min = min-1;
 				sec = 60-1;
 			} else {
-				sec = sec - 1;
+				sec = sec-1;
 			}
 			$("#timer").attr("value",min+":"+sec);
 		}, 1000);	
-	}));
+	
+	
+	
+	$(".answer_parents").children().click(function(){
+		console.log(1);
+	})
 	
 </script>
 </head>
@@ -86,17 +93,17 @@
 							<font class="q_font">1. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
 							</font>
 						</div>
-						<div>
-							<input type="radio" class="radio" value="1" checked><font class="r_font">1</font> 
+						<div class="answer_parents">
+							<input type="radio" id="answer" class="radio" value="1" checked><font class="r_font">1</font> 
 						</div>
-						<div>
-							<input type="radio" class="radio" value="1" checked><font class="r_font">2</font> 
+						<div class="answer_parents">
+							<input type="radio" class="radio" value="2" checked><font class="r_font">2</font> 
 						</div>
-						<div>
-							<input type="radio" class="radio" value="1" checked><font class="r_font">3</font> 
+						<div class="answer_parents">
+							<input type="radio" class="radio" value="3" checked><font class="r_font">3</font> 
 						</div>
-						<div>
-							<input type="radio" class="radio" value="1" checked><font class="r_font">4</font> 
+						<div class="answer_parents">
+							<input type="radio" class="radio" value="4" checked><font class="r_font">4</font> 
 						</div>
 					</div>
 					<div class="div_margin">
@@ -104,16 +111,16 @@
 							<font class="q_font">2. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
 							</font>
 						</div>
-						<div>
+						<div class="answer_parents">
 							<input type="radio" class="radio" value="1" checked><font class="r_font">1</font> 
 						</div>
-						<div>
+						<div class="answer_parents">
 							<input type="radio" class="radio" value="2" checked><font class="r_font">2</font> 
 						</div>
-						<div>
+						<div class="answer_parents">
 							<input type="radio" class="radio" value="3" checked><font class="r_font">3</font> 
 						</div>
-						<div>
+						<div class="answer_parents">
 							<input type="radio" class="radio" value="4" checked><font class="r_font">4</font> 
 						</div>
 					</div>
@@ -122,16 +129,16 @@
 							<font class="q_font">3. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
 							</font>
 						</div>
-						<div>
+						<div class="answer_parents">
 							<input type="radio" class="radio" value="1" checked><font class="r_font">1</font> 
 						</div>
-						<div>
+						<div class="answer_parents">
 							<input type="radio" class="radio" value="2" checked><font class="r_font">2</font> 
 						</div>
-						<div>
+						<div class="answer_parents">
 							<input type="radio" class="radio" value="3" checked><font class="r_font">3</font> 
 						</div>
-						<div>
+						<div class="answer_parents">
 							<input type="radio" class="radio" value="4" checked><font class="r_font">4</font> 
 						</div>
 					</div>
