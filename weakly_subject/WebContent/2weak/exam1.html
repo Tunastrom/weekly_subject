@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>시험응시 (3 of 6)</title>
 <script type="text/javascript"></script>
-<script src="input_Check.js"></script>
 <script src="jquery.min.js"></script>
 <style>
      th { padding: 20px 0px 20px 0px}
@@ -19,7 +18,7 @@
 	.div_margin { margin: 20px;}
 	.graybox { background-color: #DCDCDC; border-width: thin;
 	          border-color:	#DCDCDC;} 
-	.radio { width: 20px; height:20px; }
+	.answerL { width: 20px; height:20px; }
 	.r_font { font-size: 17px; }
 	.q_font { font-weight: bold; margin-right: 2px}
 	.q_margin { margin-bottom: 20px;}
@@ -29,7 +28,11 @@
 </style>
 <script>
 	var min=60;
-	var sec=00;		
+	var sec=00;	
+	var answerTotal;
+	var a_idx;
+	var q_idx
+	var a_stat;
 	
 	var timer=setInterval(function(){
 			if (sec == 00){
@@ -41,22 +44,99 @@
 			$("#timer").attr("value",min+":"+sec);
 		}, 1000);	
 	
+/* 왼쪽radio checked = 오른쪽 radio checked */	
+	$(document).on("mouseover", ".answerL", function(){
+		a_idx=$(".answerL").index(this);  console.log(a_idx);
+		a_stat=$(this).prop("checked"); 
+	});
 	
+	$(document).on("mouseover", ".answerR", function(){
+		a_idx=$(".answerR").index(this);  
+		a_stat=$(this).prop("checked"); 
+	});
 	
-	$(".answer_parents").children().click(function(){
-		console.log(1);
-	})
+	$(document).on("click", ".answerL", function(){
+		if (a_stat == true) {
+			$(this).prop("checked", false);
+			$(".answerR:eq("+ a_idx +")").prop("checked", false); 
+		} else {
+			$(this).prop("checked", true);
+			$(".answerR:eq("+ a_idx +")").prop("checked", true);  
+		} 
+	});
 	
+	$(document).on("click", ".answerR", function(){
+		if (a_stat == true) {
+			$(this).prop("checked", false);
+			$(".answerL:eq("+ a_idx +")").prop("checked", false); 
+		} else {
+			$(this).prop("checked", true);
+			$(".answerL:eq("+ a_idx +")").prop("checked", true);  
+		} 
+	});
+	
+	$(document).on("mouseup", ".answerL", function(){
+		radio_stat=$(this).prop("checked");  
+	});
+	
+	$(document).on("mouseup", ".answerR", function(){
+		radio_stat=$(this).prop("checked");  
+	});
+/*오른쪽 문제번호 click => 같은 번호 왼쪽 문제 scroll 이동*/ 
+
+	$(document).on("mouseover", ".q_fontR", function(){
+		q_idx=$(".q_fontR").index(this);  
+	});
+	
+	$(document).on("click", ".q_fontR", function(){
+		 $("html, body").animate( { scrollTop : $(".q_fontL:eq("+ q_idx +")").offset().top}, 500 );
+	});
+	
+
+/*제출시 빈답변 체크*/	
+ 
+ 	$(document).ready(function(){
+		answerTotal=$('.answerL').length;
+	});		
+ 
+	$(document).on("click",".submit", function (){	
+		var count=0;
+		for(var i=0; i<answerTotal; i+=4){
+			var noanswer=0;
+			for(var j=i; j<i+4; j++){
+				var FT=$(".answerL:eq("+j+")").prop("checked");
+				 console.log(FT);
+				 if (FT==false){
+					 noanswer += 1;
+					 console.log(noanswer)
+				 };
+			}
+			if (noanswer == 4){
+				count=count+1;
+				console.log(count);
+			};
+		}
+		if (count>0){
+			var result = confirm("풀지 않은 문제가 "+count+"문항이 있습니다. 제출할까요?");
+			if(result){
+				$(function(){
+					location.replace("testlist1.html")
+				});
+			} else {
+				
+			}
+		}
+	});
 </script>
 </head>
-<body>
+<body class="window">
 	<div style="margin: 15% 15%; width: 1100px;">
 		<div style="margin: 0px 0px 20px 0px;"><font style="font-size: 24px; font-weight: bold;">시험응시</font></div> 
-		<form id="frm" name="frm" action="testlist1.html" method="post" onsubmit="return testFormCheck()">
+		<form id="frm" name="frm" action="" method="post">
 		<table border="0" rules="none">
 			<caption align="bottom" style="margin-top: 20px;">
 					<div align="left">
-						<button class="submit" onclick="location.href='result1.html'">제출하기</button>
+						<button class="submit">제출하기</button>
 					</div>
 			</caption>
 			<tr class="graybox">
@@ -90,56 +170,74 @@
 				<td colspan="6" class="graybox">
 					<div class="div_margin">
 						<div class="q_margin">	
-							<font class="q_font">1. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
+							<font class="q_fontL">1. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
 							</font>
 						</div>
-						<div class="answer_parents">
-							<input type="radio" id="answer" class="radio" value="1" checked><font class="r_font">1</font> 
+						<div>
+							<input type="radio" class="answerL" value="1"><font class="r_font">1</font> 
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="2" checked><font class="r_font">2</font> 
+						<div>
+							<input type="radio" class="answerL" value="2"><font class="r_font">2</font> 
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="3" checked><font class="r_font">3</font> 
+						<div>
+							<input type="radio" class="answerL" value="3"><font class="r_font">3</font> 
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="4" checked><font class="r_font">4</font> 
+						<div>
+							<input type="radio" class="answerL" value="4"><font class="r_font">4</font> 
 						</div>
 					</div>
 					<div class="div_margin">
-						<div class="q_margin">
-							<font class="q_font">2. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
+						<div class="q_margin">	
+							<font class="q_fontL">2. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
 							</font>
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="1" checked><font class="r_font">1</font> 
+						<div>
+							<input type="radio" class="answerL" value="1"><font class="r_font">1</font> 
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="2" checked><font class="r_font">2</font> 
+						<div>
+							<input type="radio" class="answerL" value="2"><font class="r_font">2</font> 
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="3" checked><font class="r_font">3</font> 
+						<div>
+							<input type="radio" class="answerL" value="3"><font class="r_font">3</font> 
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="4" checked><font class="r_font">4</font> 
+						<div>
+							<input type="radio" class="answerL" value="4"><font class="r_font">4</font> 
 						</div>
 					</div>
 					<div class="div_margin">
-						<div class="q_margin">
-							<font class="q_font">3. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
+						<div class="q_margin">	
+							<font class="q_fontL">3. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
 							</font>
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="1" checked><font class="r_font">1</font> 
+						<div>
+							<input type="radio" class="answerL" value="1"><font class="r_font">1</font> 
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="2" checked><font class="r_font">2</font> 
+						<div>
+							<input type="radio" class="answerL" value="2"><font class="r_font">2</font> 
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="3" checked><font class="r_font">3</font> 
+						<div>
+							<input type="radio" class="answerL" value="3"><font class="r_font">3</font> 
 						</div>
-						<div class="answer_parents">
-							<input type="radio" class="radio" value="4" checked><font class="r_font">4</font> 
+						<div>
+							<input type="radio" class="answerL" value="4"><font class="r_font">4</font> 
+						</div>
+					</div>
+					<div class="div_margin">
+						<div class="q_margin">	
+							<font class="q_fontL">4. 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며 미묘한
+							</font>
+						</div>
+						<div>
+							<input type="radio" class="answerL" value="1"><font class="r_font">1</font> 
+						</div>
+						<div>
+							<input type="radio" class="answerL" value="2"><font class="r_font">2</font> 
+						</div>
+						<div>
+							<input type="radio" class="answerL" value="3"><font class="r_font">3</font> 
+						</div>
+						<div>
+							<input type="radio" class="answerL" value="4"><font class="r_font">4</font> 
 						</div>
 					</div>
 				</td>
@@ -147,96 +245,48 @@
 				<td colspan="2" style="width: 300px; vertical-align: top;" >
 					<div class="graybox" style="padding: 4px;">
 						<div>
-							<span><font class="q_font">1.</font></span>
+							<span><font class="q_fontR">1.</font></span>
 							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
-							</span>
-						</div>
-						<div>
-							<span><font class="q_font">2.</font></span>
-							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
-							</span>
-						</div>
-						<div>
-							<span><font class="q_font">3.</font></span>
-							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
-							</span>
-						</div>
-						<div>
-							<span><font class="q_font">4.</font></span>
-							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
-							</span>
-						</div>
-						<div>
-							<span><font class="q_font">5.</font></span>
-							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
-							</span>
-						</div>
-						<div>
-							<span><font class="q_font">6.</font></span>
-							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
-							</span>
-						</div>
-						<div>
-							<span><font class="q_font">7.</font></span>
-							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
-							</span>
-						</div>
-						<div>
-							<span><font class="q_font">8.</font></span>
-							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
-							</span>
-						</div>
-						<div>
-							<span><font class="q_font">9.</font></span>
-							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
-							</span>
-						</div>
-						<div>
-							<span><font class="q_font">10.</font></span>
-							<span>
-								<input type="radio" class="radio" value="1" checked><font class="r_font">1</font>
-								<input type="radio" class="radio" value="2" checked><font class="r_font">2</font>
-								<input type="radio" class="radio" value="3" checked><font class="r_font">3</font>
-								<input type="radio" class="radio" value="4" checked><font class="r_font">4</font>
+								<input type="radio" class="answerR" value="1"><font class="r_font">1</font>
+								<input type="radio" class="answerR" value="2"><font class="r_font">2</font>
+								<input type="radio" class="answerR" value="3"><font class="r_font">3</font>
+								<input type="radio" class="answerR" value="4"><font class="r_font">4</font>
 							</span>
 						</div>
 					</div>	
+					<div class="graybox" style="padding: 4px;">
+						<div>
+							<span><font class="q_fontR">2.</font></span>
+							<span>
+								<input type="radio" class="answerR" value="1"><font class="r_font">1</font>
+								<input type="radio" class="answerR" value="2"><font class="r_font">2</font>
+								<input type="radio" class="answerR" value="3"><font class="r_font">3</font>
+								<input type="radio" class="answerR" value="4"><font class="r_font">4</font>
+							</span>
+						</div>
+					</div>	
+					<div class="graybox" style="padding: 4px;">
+						<div>
+							<span><font class="q_fontR">3.</font></span>
+							<span>
+								<input type="radio" class="answerR" value="1"><font class="r_font">1</font>
+								<input type="radio" class="answerR" value="2"><font class="r_font">2</font>
+								<input type="radio" class="answerR" value="3"><font class="r_font">3</font>
+								<input type="radio" class="answerR" value="4"><font class="r_font">4</font>
+							</span>
+						</div>
+					</div>	
+					<div class="graybox" style="padding: 4px;">
+						<div>
+							<span><font class="q_fontR">4.</font></span>
+							<span>
+								<input type="radio" class="answerR" value="1"><font class="r_font">1</font>
+								<input type="radio" class="answerR" value="2"><font class="r_font">2</font>
+								<input type="radio" class="answerR" value="3"><font class="r_font">3</font>
+								<input type="radio" class="answerR" value="4"><font class="r_font">4</font>
+							</span>
+						</div>
+					</div>				
 				</td>
 			</tr>
 		</table>
