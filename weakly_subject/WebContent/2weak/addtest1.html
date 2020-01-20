@@ -56,7 +56,7 @@ $(function(){
 	});
 	
 	$(".r_font").hover(function(){
-		radio_id=$(this).parent().prev().attr("id");     console.log(radio_id);
+		radio_id=$(this).prev().attr("id");     console.log(radio_id);
 		radio_stat = $('#'+radio_id).prop("checked");    console.log(radio_stat);
 	});
 	
@@ -123,11 +123,11 @@ $(function(){
 					<div>
 						<span class="radio_parents">
 							<input type="radio" class="radio" name="type1" id="type1" value="R" checked>
-						    <label for="type1"><font class="r_font">랜덤출제</font></label>
+						    <font class="r_font">랜덤출제</font>
 						</span>
 						<span class="radio_parents">
 							<input type="radio" class="radio" name="type2" id="type2" value="A">
-						    <label for="type2"><font class="r_font">고정출제</font></label>
+						    <font class="r_font">고정출제</font>
 						</span>
 					</div>
 				</td>

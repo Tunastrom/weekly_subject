@@ -50,6 +50,23 @@ $(function(){
 	$(".radio_parents").children().mouseup(function(){
 		radio_stat=$('#'+radio_id).prop("checked");
 	});	
+	
+	$(".r_font").hover(function(){
+		radio_id=$(this).prev().attr("id");     console.log(radio_id);
+		radio_stat = $('#'+radio_id).prop("checked");    console.log(radio_stat);
+	});
+	
+	$("r_font").click(function(){
+		if (radio_stat == true) {
+			$('#'+radio_id).prop("checked", false); 
+		} else {
+			$('#'+radio_id).prop("checked", true);  
+		} 
+	});
+	
+	$("r_font").mouseup(function(){
+		radio_stat=$('#'+radio_id).prop("checked");  console.log(radio_stat);
+	});
 });
 </script>
 </head>
@@ -103,19 +120,19 @@ $(function(){
 				    <div  style="padding: 15px;">
 						<span class="radio_parents">
 							<input type="radio" class="radio" name="score1" id="score1" value="1">
-							<label for="score1"><font class="r_font">1</font></label>
+							<font class="r_font">1</font>
 						</span>
 						<span class="radio_parents">
 							<input type="radio" class="radio" name="score2" id="score2"value="2">
-							<label for="score2"><font class="r_font">2</font></label>
+							<font class="r_font">2</font>
 						</span>
 						<span class="radio_parents">
 							<input type="radio" class="radio" name="score3" id="score3"value="3">
-							<label for="score3"><font class="r_font">3</font></label>
+							<font class="r_font">3</font>
 						</span>
 						<span class="radio_parents">
 							<input type="radio" class="radio" name="score4"id="score4" value="4">
-							<label for="score4"><font class="r_font">4</font></label>
+							<font class="r_font">4</font>
 						</span>
 					</div>
 				</td>
