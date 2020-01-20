@@ -42,11 +42,11 @@
 				sec = sec-1;
 			}
 			$("#timer").attr("value",min+":"+sec);
-		}, 1000);	
+		}, 1000);
 	
 /* 왼쪽radio checked = 오른쪽 radio checked */	
 	$(document).on("mouseover", ".answerL", function(){
-		a_idx=$(".answerL").index(this);  console.log(a_idx);
+		a_idx=$(".answerL").index(this);  /*console.log(a_idx);*/
 		a_stat=$(this).prop("checked"); 
 	});
 	
@@ -96,7 +96,7 @@
 /*제출시 빈답변 체크*/	
  
  	$(document).ready(function(){
-		answerTotal=$('.answerL').length;
+		answerTotal=$(".answerL").length;
 	});		
  
 	$(document).on("click",".submit", function (){	

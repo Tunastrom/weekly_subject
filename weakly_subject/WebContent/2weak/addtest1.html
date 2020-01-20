@@ -55,22 +55,22 @@ $(function(){
 		radio_stat=$('#'+radio_id).prop("checked");  console.log(radio_stat);
 	});
 	
-	/*$("font").hover(function(){
+	$(".r_font").hover(function(){
 		radio_id=$(this).parent().prev().attr("id");     console.log(radio_id);
 		radio_stat = $('#'+radio_id).prop("checked");    console.log(radio_stat);
 	});
 	
-	$("font").click(function(){
+	$("r_font").click(function(){
 		if (radio_stat == true) {
 			$('#'+radio_id).prop("checked", false); 
 		} else {
 			$('#'+radio_id).prop("checked", true);  
 		} 
-	})
+	});
 	
-	$("font").mouseup(function(){
+	$("r_font").mouseup(function(){
 		radio_stat=$('#'+radio_id).prop("checked");  console.log(radio_stat);
-	});*/	
+	});
 });
 </script>
 </head>
@@ -126,7 +126,7 @@ $(function(){
 						    <label for="type1"><font class="r_font">랜덤출제</font></label>
 						</span>
 						<span class="radio_parents">
-							<input type="radio" class="radio" name="type2" id="type2"value="A">
+							<input type="radio" class="radio" name="type2" id="type2" value="A">
 						    <label for="type2"><font class="r_font">고정출제</font></label>
 						</span>
 					</div>
