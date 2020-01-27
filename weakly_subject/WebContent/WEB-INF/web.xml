@@ -2,6 +2,46 @@
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
 <web-app id="WebApp_ID">
 	<display-name>weakly_subject</display-name>
+	<servlet>
+		<servlet-name>CBTcontroller</servlet-name>
+		<display-name>CBTcontroller</display-name>
+		<description></description>
+		<servlet-class>controller.CBTcontroller</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CBTcontrol</servlet-name>
+		<display-name>CBTcontrol</display-name>
+		<description></description>
+		<servlet-class>controller.CBTcontroller</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CBTcon</servlet-name>
+		<display-name>CBTcon</display-name>
+		<description></description>
+		<servlet-class>controller.CBTcon</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>CBTCON</servlet-name>
+		<display-name>CBTCON</display-name>
+		<description></description>
+		<servlet-class>controller.CBTCON</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CBTcontroller</servlet-name>
+		<url-pattern>/CBTcontroller</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CBTcontrol</servlet-name>
+		<url-pattern>/CBTcontrol</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CBTcon</servlet-name>
+		<url-pattern>/CBTcon</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CBTCON</servlet-name>
+		<url-pattern>/CBTCON</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>

@@ -36,6 +36,9 @@
 	
 	var timer=setInterval(function(){
 			if (sec == 00){
+				if (min == 60){
+					$("#timer").attr("value",min+":"+sec);	
+				}
 				min = min-1;
 				sec = 60-1;
 			} else {
