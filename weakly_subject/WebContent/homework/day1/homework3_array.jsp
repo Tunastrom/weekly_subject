@@ -14,8 +14,8 @@
 	//div의 값을 콤마(,)로 분리하여 각각의 텍스트필드에 출력
 	var res;
 	var inputArr = document.getElementsByTagName("input");
-	console.log(result.innerText);
-	var child = result.innerText;
+	console.log(result.innerHTML);
+	var child = result.innerHTML;
 	console.log(child);
 	var sp = child.toString().split(",");
 	//div 내용을 배열로 변환  : split

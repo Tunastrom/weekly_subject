@@ -14,8 +14,8 @@
 	
 	//객체배열 []
 	let TestArr = [ { no:1, exam_nm:"홍길동", exam_no:"1" },
-		             { no:2, exam_nm:"김길동", exam_no:"2" }, 
-		             { no:1, exam_nm:"정길동", exam_no:"3" } ];
+		            { no:2, exam_nm:"김길동", exam_no:"2" }, 
+		            { no:1, exam_nm:"정길동", exam_no:"3" } ];
 	//TestDTO 작성자 출력
 	document.write(TestDTO.exam_nm + "<br>");
 	//boardArr 두번째 과일 출력

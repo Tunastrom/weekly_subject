@@ -13,13 +13,13 @@ window.onload = function(){
 
 function inputCheck(){
 //모든 항목 필수입력 체크
-/*var txtArr = document.querySelectorAll("textarea,[type=text]"); 
+var txtArr = document.querySelectorAll("textarea,[type=text]"); 
 for(i=0;i<txtArr.length;i++){
 	if(txtArr[i].value == "") {
 		alert(txtArr[i].id +"가 입력되지 않았습니다.");
 		return;
 	}
-}*/
+}
 //이름은 최소 길이가 5글자 이상인지 체크하고 모두 대문자로 변경하여 출력
 	var name = mbName.value; 
 	if (mbName.value.length >= 5){
@@ -39,7 +39,7 @@ for(i=0;i<txtArr.length;i++){
 //등록일자는 날짜 형식이 맞는지 체크하고 년도는 2015~2019년도 사이인지 체크하여 결과 출력
 	function isDatetime(d)
 	{
-    	var re = /201[5-9]-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/;
+    	var re = /[201][5-9]-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01][0-9]):[0-5][0-9]/;
     //         yyyy -       MM      -       dd           hh     :   mm  :   ss
    		return re.test(d);
 	}
@@ -71,7 +71,6 @@ for(i=0;i<txtArr.length;i++){
 	var res="";
 	console.log(text.lastIndexOf("\n"));
 	while(index<=text.lastIndexOf("\n")){
-		console.log(index);
 		index=text.indexOf("\n",index);
 		if(index==null){
 			return
