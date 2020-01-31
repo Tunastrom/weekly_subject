@@ -26,11 +26,7 @@
 				Arrindex++;
 			}
 			inputDate = inputArr.join(",");
-			console.log(new Date());
-			console.log(inputDate);
 			var result1 = (new Date() - new Date(inputDate));
-			console.log(result1);
-			console.log(result1/1000/60/60/24); 
 			var result2 = result1/1000/60/60/24;
 			result.innerHTML="오늘로부터 "
 			if (result2 >= 1){
@@ -40,7 +36,6 @@
 			} else {
 				result.innerHTML="그날은 오늘입니다"
 			}
-		
 			//반올름해서 출력 할 것
 		});
 	
