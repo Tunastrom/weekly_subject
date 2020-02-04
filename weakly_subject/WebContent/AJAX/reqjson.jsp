@@ -22,6 +22,7 @@ function loadDoc() {
 	  	}
 	                      //쿼리문자열 url? 변수명=값&변수명=값
 	  xhttp.open("GET", "../GetJSON.do?", true);
+	                                      //async 여부
 	  xhttp.send();
 	}
 </script>

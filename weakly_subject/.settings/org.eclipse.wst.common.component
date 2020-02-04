@@ -2,7 +2,7 @@
     <wb-module deploy-name="weakly_subject">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="weakly_subject"/>
         <property name="java-output-path" value="/weakly_subject/build/classes"/>
+        <property name="context-root" value="weakly_subject"/>
     </wb-module>
 </project-modules>

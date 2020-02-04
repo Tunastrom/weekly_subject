@@ -1,87 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
 <web-app id="WebApp_ID">
-	<display-name>weakly_subject</display-name>
-	<servlet>
-		<servlet-name>CBTcontroller</servlet-name>
-		<display-name>CBTcontroller</display-name>
-		<description></description>
-		<servlet-class>controller.CBTcontroller</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>CBTcontrol</servlet-name>
-		<display-name>CBTcontrol</display-name>
-		<description></description>
-		<servlet-class>controller.CBTcontroller</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>CBTcon</servlet-name>
-		<display-name>CBTcon</display-name>
-		<description></description>
-		<servlet-class>controller.CBTcon</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>CBTCON</servlet-name>
-		<display-name>CBTCON</display-name>
-		<description></description>
-		<servlet-class>controller.CBTCON</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>GetNumber</servlet-name>
-		<display-name>GetNumber</display-name>
-		<description></description>
-		<servlet-class>ajax.GetNumber</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>FindName</servlet-name>
-		<display-name>FindName</display-name>
-		<description></description>
-		<servlet-class>ajax.FindName</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>GetXML</servlet-name>
-		<display-name>GetXML</display-name>
-		<description></description>
-		<servlet-class>ajax.GetXML</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>GetJSON</servlet-name>
-		<display-name>GetJSON</display-name>
-		<description></description>
-		<servlet-class>ajax.GetJSON</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>CBTcontroller</servlet-name>
-		<url-pattern>/CBTcontroller</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>CBTcontrol</servlet-name>
-		<url-pattern>/CBTcontrol</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>CBTcon</servlet-name>
-		<url-pattern>/CBTcon</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>CBTCON</servlet-name>
-		<url-pattern>/CBTCON</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>GetNumber</servlet-name>
-		<url-pattern>/GetNumber</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>FindName</servlet-name>
-		<url-pattern>/FindName</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>GetXML</servlet-name>
-		<url-pattern>/GetXML</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>GetJSON</servlet-name>
-		<url-pattern>/GetJSON</url-pattern>
-	</servlet-mapping>
+  <display-name>mirabeau</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -90,4 +10,13 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	<filter>
+  <filter-name>sitemesh</filter-name>
+  <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+</filter>
+ 
+<filter-mapping>
+  <filter-name>sitemesh</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
 </web-app>

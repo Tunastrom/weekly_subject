@@ -2,7 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.function.BiFunction;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -11,21 +13,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import boardAjax.AjaxBoardList;
 import command.Command;
-import command.addTestCommand;
-import command.addTestCommandDAO;
 
 
 /**
  * Servlet implementation class NewFrontController
  */
-public class CBTController extends HttpServlet {
+@WebServlet("*.do")
+public class NewFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        HashMap<String, Command> cont = new HashMap<>(); 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CBTController() {
+    public NewFrontController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,27 +36,15 @@ public class CBTController extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-//		cont.put("/index.do", );
-		cont.put("/addtest.do", new addTestCommand());
-		cont.put("/addtestdao.do", new addTestCommandDAO());
-//		cont.put("/loginOk.do", );
-//		cont.put("/logout.do",);
-//		cont.put("/newMember.do", );
-//		cont.put("/idCheck.do", );
-//		cont.put("/newMemberOk.do", );
-//		cont.put("/memberList.do", );
-//		cont.put("/notice.do", );
-//		cont.put("/noticeInput.do", );
-//		cont.put("/noticeInputOk.do", );
-//		cont.put("/boardList.do", );
-//		cont.put("/boardWrite.do",);
-//		cont.put("/boardWriteOk.do", );
-//		cont.put("/boardRead.do", );
-		
-		
-		
-		
-		
+		//cont.put("/index.do", new IndexCommand());
+		//board
+		//등록
+		//수정
+		//삭제
+		//member
+		//ajax
+		cont.put("/ajaxBoardList.do", new AjaxBoardList());
+			
 	}
 
 	/**
@@ -67,10 +57,35 @@ public class CBTController extends HttpServlet {
 		String uri = request.getRequestURI();
 		String context = request.getContextPath();
 		String path = uri.substring(context.length());
-		System.out.println(path);
+		//로그처리
+		System.out.println("path="+path);
+		//권한체크(로그인 체크)
+		
 		
 		Command commandImpl = cont.get(path);
-		commandImpl.execute(request, response);	
+		String page = null;
+		response.setContentType("text/html; charset=UTF-8");
+		if(commandImpl != null) {
+			//return 된 viewpage 주소 텍스트 실행 
+			page = commandImpl.execute(request, response);
+			if (page != null & page.isEmpty()) {
+				if (page.startsWith("redirect:")){
+					String view = page.substring(9);
+					response.sendRedirect(view);
+				} else if (page.startsWith("ajax:")){
+					response.getWriter().append(page.substring(5));
+				} else if (page.startsWith("script:")){
+					response.getWriter().append("<script>")
+                    .append(page.substring(7))
+                    .append("</script>");
+				} else {
+					request.getRequestDispatcher(page)
+					.forward(request, response); 
+				}
+			}
+		} else {
+			response.getWriter().append("잘못된 요청");
+		}
 	}
-
 }
+
